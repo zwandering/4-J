@@ -1,29 +1,6 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Mar 21 10:02:40 2022
-
-@author: user
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Aug 31 17:20:11 2021
-
-@author: user
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Mar  4 15:54:21 2021
-
-@author: user
-"""
-
 import numpy as np
 
 import torch
-#import ctypes
-#ctypes.cdll.LoadLibrary('caffe2_nvrtc.dll')
 import torch.nn as nn
 from torch.autograd import Variable
 import torch.utils.data as Data
@@ -165,48 +142,6 @@ def get_dataset(test_id,session): ## dataloading function, you should modify thi
 
     target_set = {'feature': test_data_all[test_id].data, 'label': test_data_all[test_id].label}
     source_set = {'feature': train_data_all[test_id].data, 'label': train_data_all[test_id].label}
-
-    # path='F:\\zhourushuang\\transfer_learning\\feature_for_net_session'+str(session)+'_LDS_de'
-    # path = f'/home/huteng/zhuhaokun/4-J/proj/SEED-IV/{session}'
-    # os.chdir(path)
-    # feature_list=[]
-    # label_list=[]
-    # ## our label:0 negative, label:1 :neural,label:2:positive, seed original label: -1,0,1, our label= seed label+1
-    # min_max_scaler = preprocessing.MinMaxScaler(feature_range = (-1, 1))
-    # for info in os.listdir(path):
-    #     domain = os.path.abspath(path)
-    #     info_ = os.path.join(domain,info)
-    #     if session==1:
-    #         feature = scio.loadmat(info_)['dataset_session1']['feature'][0,0]
-    #         label = scio.loadmat(info_)['dataset_session1']['label'][0,0]
-    #     elif session==2:
-    #         feature = scio.loadmat(info_)['dataset_session2']['feature'][0,0]
-    #         label = scio.loadmat(info_)['dataset_session2']['label'][0,0]
-    #     else:
-    #         feature = scio.loadmat(info_)['dataset_session3']['feature'][0,0]
-    #         label = scio.loadmat(info_)['dataset_session3']['label'][0,0]
-    #     feature_list.append(min_max_scaler.fit_transform(feature).astype('float32')) # Variable 'feature' is a [3394, 310] DE feature matrix from SEED dataset.
-    #     one_hot_label_mat=np.zeros((len(label),3)) # Variable 'one_hot_label_mat' is a [3394, 3] ground-truth matrix from SEED dataset.
-    #     for i in range(len(label)):
-    #         if label[i]==0: # '0' refers to '-1 (negative emotion)' in SEED
-    #             one_hot_label=[1,0,0]
-    #             one_hot_label=np.hstack(one_hot_label).reshape(1,3)
-    #             one_hot_label_mat[i,:]=one_hot_label
-    #         if label[i]==1: # '1' refers to '0 (neutral emotion)' in SEED
-    #             one_hot_label=[0,1,0]
-    #             one_hot_label=np.hstack(one_hot_label).reshape(1,3)
-    #             one_hot_label_mat[i,:]=one_hot_label
-    #         if label[i]==2: # '2' refers to '1 (positive emotion)' in SEED
-    #             one_hot_label=[0,0,1]
-    #             one_hot_label=np.hstack(one_hot_label).reshape(1,3)
-    #             one_hot_label_mat[i,:]=one_hot_label
-    #     label_list.append(one_hot_label_mat.astype('float32'))
-    # target_feature,target_label=feature_list[test_id],label_list[test_id]
-    # del feature_list[test_id]
-    # del label_list[test_id]
-    # source_feature,source_label=np.vstack(feature_list),np.vstack(label_list)
-    # target_set={'feature':target_feature,'label':target_label}
-    # source_set={'feature':source_feature,'label':source_label}
     return target_set,source_set
 
 def get_generated_targets(model,x_s,x_t,labels_s): ## Get generated labels by threshold

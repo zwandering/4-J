@@ -1,16 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Mar 21 10:22:41 2022
-
-@author: user
-"""
-
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Aug 31 15:29:11 2021
-
-@author: user
-"""
 import torch.nn as nn
 import torch.nn.functional as F
 import torch

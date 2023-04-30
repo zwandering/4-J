@@ -1,10 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Aug 31 19:41:39 2021
-
-@author: user
-"""
-
 from typing import Optional, Any, Tuple
 import torch
 import torch.nn as nn
